@@ -59,7 +59,7 @@ tag:
 	git tag $(TAG) && git push --tags --no-verify
 
 deploy:
-	ansible-playbook ansible/release.yml -i inventory.ini --extra-vars "version=$V"
+	ansible-playbook ansible/release.yml -i ansible/inventory.yml --extra-vars "version=$V"
 
 ssh:
 	ssh root@`yq e '.all.children.webservers.hosts.web1.ansible_host' ansible/inventory.yml`
