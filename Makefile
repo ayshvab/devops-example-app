@@ -55,6 +55,9 @@ test:
 env-prepare:
 	cp -n .env.example .env || true
 
+tag:
+	git tag $(TAG) && git push --tags --no-verify
+
 deploy:
 	ansible-playbook ansible/release.yml -i inventory.ini --extra-vars "version=$V"
 
