@@ -8,7 +8,7 @@
         name: devops-example
 
     - community.docker.docker_container:
-        name: "{{ item }}"
+        name: app
         # Обязатлеьно указываем тег, который хотим деплоить
         # Если образа на сервере нет, Ansible его автоматически скачает
         image: "ays4/devops-example-app:{{ version }}"
@@ -25,9 +25,6 @@
           - 3000:3000
         env: # Настраиваем
           NODE_ENV: production
-      loop:
-        - app1
-        - app2
 
     - community.docker.docker_container:
         name: caddy
